@@ -1,12 +1,19 @@
 package org.launchcode.techjobs.persistent.models;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 
+@MappedSuperclass
 public abstract class AbstractEntity {
 
+    @Id
+    @GeneratedValue
     private int id;
-
+@NotBlank @Size(min = 1, max = 60)
     private String name;
 
     public int getId() {
