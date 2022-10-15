@@ -16,13 +16,21 @@ import java.util.List;
 @Entity
 public class Employer extends AbstractEntity {
 
-    @Id @NotEmpty @NotNull @Size(min = 0, max = 70)
+
+    @NotEmpty
+    @NotNull
+    @Size(min = 0, max = 70)
     private String location;
 
-    @OneToMany @JoinColumn(name = "employer_id")
+    @OneToMany
+    @JoinColumn(name = "employer_id")
     private final List<Job> jobs = new ArrayList<>();
 
     public Employer () {};
+
+    public List<Job> getJobs() {
+        return jobs;
+    }
 
     public String getLocation() {
         return location;
@@ -32,6 +40,6 @@ public class Employer extends AbstractEntity {
         this.location = location;
     }
 
-    public void save(EmployerRepository employerRepository) {
-    }
+//    public void save(EmployerRepository employerRepository) {
+//    }
 }

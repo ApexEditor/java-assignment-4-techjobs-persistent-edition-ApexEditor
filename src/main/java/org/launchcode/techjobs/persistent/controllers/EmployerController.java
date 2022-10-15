@@ -22,15 +22,16 @@ public class EmployerController {
 
 
     //Add an index method that responds at /employers with a list of all employers in the database. This method should use the template --> employers/index
-    @PostMapping("")
-public String index(Model model){
-    model.addAttribute("employers", employerRepository.findAll());
+    @GetMapping("")
+    public String index(Model model){
+        model.addAttribute("employers", employerRepository.findAll());
     return "employers/index";
 }
 
+
     @GetMapping("add")
     public String displayAddEmployerForm(Model model) {
-        model.addAttribute(new Employer());
+        model.addAttribute("employer", new Employer());
         return "employers/add";
     }
 
